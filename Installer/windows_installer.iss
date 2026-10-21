@@ -15,6 +15,10 @@
   #define BUILD_DIR "..\build\ProLoFi_artefacts\Release"
 #endif
 
+#ifndef REPO_ROOT
+  #define REPO_ROOT ".."
+#endif
+
 [Setup]
 AppId={{E6D59A72-4B69-42E1-8B39-16629B0D8F1A}
 AppName={#MyAppName}
@@ -60,7 +64,7 @@ Source: "{#BUILD_DIR}\VST3\Pro-Fi.vst3\*"; DestDir: "{commoncf64}\VST3\Pro-Fi.vs
 ; Standalone Executable
 Source: "{#BUILD_DIR}\Standalone\Pro-Fi.exe"; DestDir: "{app}"; Flags: ignoreversion; Components: standalone
 ; Documentation
-Source: "..\README.md"; DestDir: "{app}"; DestName: "README.txt"; Flags: ignoreversion; Components: standalone
+Source: "{#REPO_ROOT}\README.md"; DestDir: "{app}"; DestName: "README.txt"; Flags: ignoreversion; Components: standalone
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; Components: standalone

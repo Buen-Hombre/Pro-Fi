@@ -53,11 +53,12 @@ jobs:
       - name: Build Inno Setup Installer (.exe)
         shell: cmd
         run: |
-          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DMyAppVersion=1.0.0 /DBUILD_DIR="build\ProLoFi_artefacts\Release" Installer\windows_installer.iss
+          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DMyAppVersion=1.0.0 /DBUILD_DIR="%GITHUB_WORKSPACE%\build\ProLoFi_artefacts\Release" /DREPO_ROOT="%GITHUB_WORKSPACE%" Installer\windows_installer.iss
 
       - name: Create Portable Zip Package
         shell: pwsh
         run: |
+          New-Item -ItemType Directory -Force -Path "Installer\dist"
           New-Item -ItemType Directory -Force -Path "build\portable\Pro-Fi"
           Copy-Item -Recurse "build\ProLoFi_artefacts\Release\VST3\Pro-Fi.vst3" "build\portable\Pro-Fi\"
           Copy-Item "build\ProLoFi_artefacts\Release\Standalone\Pro-Fi.exe" "build\portable\Pro-Fi\"

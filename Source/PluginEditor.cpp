@@ -7,7 +7,11 @@ namespace ProLoFi {
 namespace {
 
 static juce::Font makeWin98Font(float height, bool bold = false) {
+#if defined(JUCE_MAJOR_VERSION) && JUCE_MAJOR_VERSION >= 8
     return juce::Font(juce::FontOptions("MS Sans Serif", height, bold ? juce::Font::bold : juce::Font::plain));
+#else
+    return juce::Font("MS Sans Serif", height, bold ? juce::Font::bold : juce::Font::plain);
+#endif
 }
 
 static void setupSunkenReadout(juce::Label& lbl) {

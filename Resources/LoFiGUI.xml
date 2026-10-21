@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<view type="" id="">
+  <bounds x="0" y="0" width="560" height="345"/>
+  <image_list id="background" x="0" y="0">
+    <image id="" src="lofi_background_mono.png"/>
+    <image id="" src="lofi_background_stereo.png"/>
+  </image_list>
+
+  <view type="Slider" id="Sample Rate">
+    <parameter id="Sample Rate"/>
+    <bounds x="75" y="66" width="215" height="26"/>
+    <image_list id="cap" src="slidercap_horizontal_blue.png" x="-2" y="1"/>
+    <image_list id="cap_highlight">
+      <image id="blue" src="auto_slider_horizontal_blue.png"/>
+      <image id="red" src="auto_slider_horizontal_red.png"/>
+      <image id="green" src="auto_slider_horizontal_green.png"/>
+      <image id="yellow" src="auto_slider_horizontal_yellow.png"/>
+    </image_list>
+    <range min="0.0" max="1.0" interval="0.016"/>
+  </view>
+
+  <view type="EditText" id="Sample Rate Text">
+    <parameter id="Sample Rate"/>
+    <bounds x="290" y="61" width="82" height="17"/>
+    <tooltip string=""/>
+    <image id="hit_area" src="" x="0" y="0"/>
+    <font typeface="Arial" height="12" bold="1" italic="0" underlined="0"/>
+    <color id="text" red="233" green="241" blue="249" alpha="255"/>
+    <justification horizontal="center" vertical="center"/>
+    <inset top="2" left="2" bottom="2" right="2"/>
+    <text string="0"/>
+  </view>
+
+  <view type="Slider" id="Anti-Alias">
+    <parameter id="Anti-Alias"/>
+    <bounds x="75" y="131" width="215" height="25"/>
+    <image_list id="cap" src="slidercap_horizontal_blue.png" x="-2" y="1"/>
+    <image_list id="cap_highlight">
+      <image id="blue" src="auto_slider_horizontal_blue.png"/>
+      <image id="red" src="auto_slider_horizontal_red.png"/>
+      <image id="green" src="auto_slider_horizontal_green.png"/>
+      <image id="yellow" src="auto_slider_horizontal_yellow.png"/>
+    </image_list>
+    <range min="0" max="1" interval="0.01"/>
+  </view>
+
+  <view type="EditText" id="Anti-AliasText">
+    <parameter id="Anti-Alias"/>
+    <bounds x="290" y="125" width="82" height="17"/>
+    <tooltip string=""/>
+    <image id="hit_area" src="" x="0" y="0"/>
+    <font typeface="Arial" height="12" bold="1" italic="0" underlined="0"/>
+    <color id="text" red="233" green="241" blue="249" alpha="255"/>
+    <justification horizontal="center" vertical="center"/>
+    <inset top="2" left="2" bottom="2" right="2"/>
+    <text string="0"/>
+  </view>
+
+  <view type="Slider" id="Sample Size">
+    <parameter id="Sample Size"/>
+    <bounds x="75" y="100" width="215" height="25"/>
+    <image_list id="cap" src="slidercap_horizontal_blue.png" x="-2" y="1"/>
+    <image_list id="cap_highlight">
+      <image id="blue" src="auto_slider_horizontal_blue.png"/>
+      <image id="red" src="auto_slider_horizontal_red.png"/>
+      <image id="green" src="auto_slider_horizontal_green.png"/>
+      <image id="yellow" src="auto_slider_horizontal_yellow.png"/>
+    </image_list>
+    <range min="2" max="24" interval="1"/>
+  </view>
+
+  <view type="EditText" id="Sample Size Text">
+    <parameter id="Sample Size"/>
+    <bounds x="290" y="93" width="82" height="17"/>
+    <tooltip string=""/>
+    <image id="hit_area" src="" x="0" y="0"/>
+    <font typeface="Arial" height="12" bold="1" italic="0" underlined="0"/>
+    <color id="text" red="233" green="241" blue="249" alpha="255"/>
+    <justification horizontal="center" vertical="center"/>
+    <inset top="2" left="2" bottom="2" right="2"/>
+    <text string="0.0"/>
+  </view>
+
+  <view type="Button" id="Quantization">
+    <parameter id="Quantization"/>
+    <bounds x="80" y="22" width="296" height="26"/>
+    <image_list id="state" x="1" y="1">
+      <image id="" src="lofi_btn_linear_on.png"/>
+      <image id="" src="lofi_btn_adaptive_on.png"/>
+    </image_list>
+    <image_list id="highlight">
+      <image id="blue" src="lofi_auto_btn_rect_blue.png"/>
+      <image id="red" src="lofi_auto_btn_rect_red.png"/>
+      <image id="green" src="lofi_auto_btn_rect_green.png"/>
+      <image id="yellow" src="lofi_auto_btn_rect_yellow.png"/>
+    </image_list>
+    <toggles value="true"/>
+    <range min="0" max="1" segments="2"/>
+  </view>
+
+  <view type="Knob" id="Noise">
+    <parameter id="Noise"/>
+    <bounds x="191" y="187" width="75" height="100"/>
+    <image id="hit_area" src="BigKnob/knob_big_default_clip.png"/>
+    <image_list id="knob" src="BigKnob/knob_big_default_%02d.png"/>
+    <image_list id="highlight" x="6" y="8">
+      <image id="blue" src="BigKnob/auto_bigknob_blue.png"/>
+      <image id="red" src="BigKnob/auto_bigknob_red.png"/>
+      <image id="green" src="BigKnob/auto_bigknob_green.png"/>
+      <image id="yellow" src="BigKnob/auto_bigknob_yellow.png"/>
+    </image_list>
+    <toggles value="true"/>
+    <range min="0" max="1" interval="0.01" minRad="1.2" maxRad="2.8"/>
+    <center x="30" y="36"/>
+  </view>
+
+  <view type="EditText" id="NoiseText">
+    <parameter id="Noise"/>
+    <bounds x="186" y="264" width="82" height="17"/>
+    <tooltip string=""/>
+    <image id="hit_area" src="" x="0" y="0"/>
+    <font typeface="Arial" height="12" bold="1" italic="0" underlined="0"/>
+    <color id="text" red="233" green="241" blue="249" alpha="255"/>
+    <justification horizontal="center" vertical="center"/>
+    <inset top="2" left="2" bottom="2" right="2"/>
+    <text string="0.0"/>
+  </view>
+
+  <view type="Knob" id="Distortion">
+    <parameter id="Distortion"/>
+    <bounds x="75" y="190" width="75" height="100"/>
+    <image id="hit_area" src="SmallKnob/knob_small_default_clip.png"/>
+    <image_list id="knob" src="SmallKnob/knob_small_default_%02d.png"/>
+    <image_list id="highlight" x="6" y="8">
+      <image id="blue" src="SmallKnob/auto_smallknob_blue.png"/>
+      <image id="red" src="SmallKnob/auto_smallknob_red.png"/>
+      <image id="green" src="SmallKnob/auto_smallknob_green.png"/>
+      <image id="yellow" src="SmallKnob/auto_smallknob_yellow.png"/>
+    </image_list>
+    <toggles value="true"/>
+    <range min="0" max="1" interval="0.01" minRad="1.2" maxRad="2.8"/>
+    <center x="30" y="36"/>
+  </view>
+
+  <view type="EditText" id="DistortionText">
+    <parameter id="Distortion"/>
+    <bounds x="119" y="204" width="61" height="17"/>
+    <tooltip string=""/>
+    <image id="hit_area" src="" x="0" y="0"/>
+    <font typeface="Arial" height="12" bold="1" italic="0" underlined="0"/>
+    <color id="text" red="233" green="241" blue="249" alpha="255"/>
+    <justification horizontal="center" vertical="center"/>
+    <inset top="2" left="2" bottom="2" right="2"/>
+    <text string="0.0"/>
+  </view>
+
+  <view type="Knob" id="Saturation">
+    <parameter id="Saturation"/>
+    <bounds x="326" y="190" width="75" height="100"/>
+    <image id="hit_area" src="SmallKnob/knob_small_default_clip.png"/>
+    <image_list id="knob" src="SmallKnob/knob_small_default_%02d.png"/>
+    <image_list id="highlight" x="6" y="8">
+      <image id="blue" src="SmallKnob/auto_smallknob_blue.png"/>
+      <image id="red" src="SmallKnob/auto_smallknob_red.png"/>
+      <image id="green" src="SmallKnob/auto_smallknob_green.png"/>
+      <image id="yellow" src="SmallKnob/auto_smallknob_yellow.png"/>
+    </image_list>
+    <toggles value="true"/>
+    <range min="0" max="1" interval="0.01" minRad="1.2" maxRad="2.8"/>
+    <center x="30" y="36"/>
+  </view>
+
+  <view type="EditText" id="SaturationText">
+    <parameter id="Saturation"/>
+    <bounds x="274" y="204" width="61" height="17"/>
+    <tooltip string=""/>
+    <image id="hit_area" src="" x="0" y="0"/>
+    <font typeface="Arial" height="12" bold="1" italic="0" underlined="0"/>
+    <color id="text" red="233" green="241" blue="249" alpha="255"/>
+    <justification horizontal="center" vertical="center"/>
+    <inset top="2" left="2" bottom="2" right="2"/>
+    <text string="0.0"/>
+  </view>
+
+  <view type="View" id="MeterOutMono">
+    <bounds x="411" y="67" width="4" height="205"/>
+    <view type="Meter" id="OutputM">
+      <meter id="OutM" type="full_on" peak="1"/>
+      <bounds x="0" y="8" width="4" height="197"/>
+      <image id="meter" src="Meters/meter_vertical_fill_mono.png"/>
+		<taper_delegate id="meter" src="Taper.xml"/>
+    </view>
+    <view type="Meter" id="MeterClipOutM">
+      <meter id="OutM" type="clip_only"/>
+      <bounds x="0" y="0" width="4" height="6"/>
+      <image_list id="clip_meter">
+        <image id="" src="Meters/meter_vertical_clip_on_lo_mono.png"/>
+        <image id="" src="Meters/meter_vertical_clip_on_hi_mono.png"/>
+      </image_list>
+    </view>
+  </view>
+
+  <view type="View" id="MeterInMono">
+    <bounds x="34" y="67" width="4" height="205"/>
+
+    <view type="Meter" id="InputM">
+      <meter id="InpM" type="full_on" peak="1"/>
+      <bounds x="0" y="8" width="4" height="197"/>
+      <image id="meter" src="Meters/meter_vertical_fill_mono.png"/>
+		<taper_delegate id="meter" src="Taper.xml"/>
+    </view>
+
+    <view type="Meter" id="MeterClipInpM">
+      <meter id="InpM" type="clip_only"/>
+      <bounds x="0" y="0" width="4" height="6"/>
+      <image_list id="clip_meter">
+        <image id="" src="Meters/meter_vertical_clip_on_lo_mono.png"/>
+        <image id="" src="Meters/meter_vertical_clip_on_hi_mono.png"/>
+      </image_list>
+    </view>
+  </view>
+
+  <view type="View" id="MeterOutStereo">
+    <bounds x="410" y="67" width="7" height="206"/>
+    <view type="Meter" id="OutputSL">
+      <meter id="OutM" type="full_on" peak="1"/>
+      <bounds x="0" y="9" width="2" height="197"/>
+      <image id="meter" src="Meters/meter_vertical_fill_stereo.png"/>
+		<taper_delegate id="meter" src="Taper.xml"/>
+    </view>
+
+    <view type="Meter" id="MeterClipOutSL">
+      <meter id="OutM" type="clip_only"/>
+      <bounds x="0" y="0" width="2" height="6"/>
+      <image_list id="clip_meter">
+        <image id="" src="Meters/meter_vertical_clip_on_lo_stereo.png"/>
+        <image id="" src="Meters/meter_vertical_clip_on_hi_stereo.png"/>
+      </image_list>
+    </view>
+
+    <view type="Meter" id="OutputSR">
+      <meter id="OutS" type="full_on" peak="1"/>
+      <bounds x="5" y="9" width="2" height="197"/>
+      <image id="meter" src="Meters/meter_vertical_fill_stereo.png"/>
+		<taper_delegate id="meter" src="Taper.xml"/>
+    </view>
+
+    <view type="Meter" id="MeterClipOutSR">
+      <meter id="OutS" type="clip_only"/>
+      <bounds x="5" y="0" width="2" height="6"/>
+      <image_list id="clip_meter">
+        <image id="" src="Meters/meter_vertical_clip_on_lo_stereo.png"/>
+        <image id="" src="Meters/meter_vertical_clip_on_hi_stereo.png"/>
+      </image_list>
+    </view>
+  </view>
+
+  <view type="View" id="MeterInStereo">
+    <bounds x="33" y="67" width="7" height="206"/>
+    <view type="Meter" id="InputSL">
+      <meter id="InpM" type="full_on" peak="1"/>
+      <bounds x="0" y="9" width="2" height="197"/>
+      <image id="meter" src="Meters/meter_vertical_fill_stereo.png"/>
+		<taper_delegate id="meter" src="Taper.xml"/>
+    </view>
+    <view type="Meter" id="MeterClipInpSL">
+      <meter id="InpM" type="clip_only"/>
+      <bounds x="0" y="0" width="2" height="6"/>
+      <image_list id="clip_meter">
+        <image id="" src="Meters/meter_vertical_clip_on_lo_stereo.png"/>
+        <image id="" src="Meters/meter_vertical_clip_on_hi_stereo.png"/>
+      </image_list>
+    </view>
+    <view type="Meter" id="InputSR">
+      <meter id="InpS" type="full_on" peak="1"/>
+      <bounds x="5" y="9" width="2" height="197"/>
+      <image id="meter" src="Meters/meter_vertical_fill_stereo.png"/>
+		<taper_delegate id="meter" src="Taper.xml"/>
+    </view>
+
+    <view type="Meter" id="MeterClipInpSR">
+      <meter id="InpS" type="clip_only"/>
+      <bounds x="5" y="0" width="2" height="6"/>
+      <image_list id="clip_meter">
+        <image id="" src="Meters/meter_vertical_clip_on_lo_stereo.png"/>
+        <image id="" src="Meters/meter_vertical_clip_on_hi_stereo.png"/>
+      </image_list>
+    </view>
+  </view>
+
+</view>

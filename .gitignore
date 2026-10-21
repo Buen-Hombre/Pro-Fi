@@ -1,0 +1,35 @@
+# Build directories
+build/
+build*/
+cmake-build-*/
+out/
+
+# IDE & Editor files
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
+*~
+
+# OS specific files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Installer outputs and local temporary packages
+Installer/dist/
+Installer/Output/
+Installer/*.pkg
+Installer/*.zip
+Installer/*.dmg
+Installer/*.app/
+
+# JUCE CMake FetchContent artifacts if placed in-tree
+_deps/
+juceaide

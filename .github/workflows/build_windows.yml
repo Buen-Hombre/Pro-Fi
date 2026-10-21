@@ -1,0 +1,84 @@
+name: Build Pro-Fi for Windows
+
+on:
+  push:
+    branches: [ main, master ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-windows:
+    name: Windows x64 (VST3, Standalone & Installer)
+    runs-on: windows-2022
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up CMake
+        uses: jwlawson/actions-setup-cmake@v2
+        with:
+          cmake-version: '3.28'
+
+      - name: Install Inno Setup
+        run: |
+          choco install innosetup --no-progress
+
+      - name: Configure CMake
+        shell: bash
+        run: |
+          cmake -B build -G "Visual Studio 17 2022" -A x64 \
+            -DCMAKE_BUILD_TYPE=Release \
+            -DPROLOFI_FETCH_JUCE=ON \
+            -DPROLOFI_COPY_AFTER_BUILD=OFF
+
+      - name: Build VST3 and Standalone
+        shell: bash
+        run: |
+          cmake --build build --config Release --target ProLoFi_VST3 ProLoFi_Standalone --parallel
+
+      - name: Verify Build Artifacts
+        shell: bash
+        run: |
+          echo "Checking build outputs..."
+          ls -la build/ProLoFi_artefacts/Release/
+          ls -la build/ProLoFi_artefacts/Release/VST3/
+          ls -la build/ProLoFi_artefacts/Release/Standalone/
+
+      - name: Build Inno Setup Installer (.exe)
+        shell: cmd
+        run: |
+          "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DMyAppVersion=1.0.0 /DBUILD_DIR="build\ProLoFi_artefacts\Release" Installer\windows_installer.iss
+
+      - name: Create Portable Zip Package
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path "build\portable\Pro-Fi"
+          Copy-Item -Recurse "build\ProLoFi_artefacts\Release\VST3\Pro-Fi.vst3" "build\portable\Pro-Fi\"
+          Copy-Item "build\ProLoFi_artefacts\Release\Standalone\Pro-Fi.exe" "build\portable\Pro-Fi\"
+          Copy-Item "README.md" "build\portable\Pro-Fi\"
+          Compress-Archive -Path "build\portable\Pro-Fi\*" -DestinationPath "Installer\dist\Pro-Fi_v1.0.0_Windows_Portable.zip" -Force
+
+      - name: Upload Windows Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Pro-Fi-Windows-x64
+          path: |
+            Installer/dist/Pro-Fi_v1.0.0_Windows_Installer.exe
+            Installer/dist/Pro-Fi_v1.0.0_Windows_Portable.zip
+          if-no-files-found: error
+
+      - name: Publish Release Assets (Tags only)
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            Installer/dist/Pro-Fi_v1.0.0_Windows_Installer.exe
+            Installer/dist/Pro-Fi_v1.0.0_Windows_Portable.zip
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
